@@ -105,7 +105,7 @@ def main(page: ft.Page):
                     ft.PopupMenuItem(
                         content=ft.Row([
                             ft.Text("window 1"),
-                            ft.IconButton(icon=ft.icons.DELETE, on_click=lambda _:print(1)),
+                            ft.IconButton(icon=ft.icons.DELETE, on_click=lambda _:print("未実装...ごめんね")),
                             ],
                             alignment=ft.MainAxisAlignment.SPACE_BETWEEN),
                         on_click=lambda _:change_window(0)), 
@@ -138,7 +138,7 @@ def main(page: ft.Page):
     page.add(ft.Row([ft.ElevatedButton("reset", on_click=lambda _:screen.reset()), ft.ElevatedButton("undo", on_click=lambda _:screen.undo())], alignment=ft.alignment.bottom_right))      #, ft.ElevatedButton("Change or add a window", on_click=lambda _: page.show_end_drawer(end_drawer))
     pick_files_dialog = ft.FilePicker(on_result=data.pick_files_result)
     page.overlay.append(pick_files_dialog)
-    page.add(ft.ElevatedButton("change questions", icon=ft.icons.UPLOAD_FILE, on_click=lambda _: pick_files_dialog.pick_files(allow_multiple=False)))
+    #page.add(ft.ElevatedButton("change questions", icon=ft.icons.UPLOAD_FILE, on_click=lambda _: pick_files_dialog.pick_files(allow_multiple=False)))
 
     
 ft.app(target=main)
