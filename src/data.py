@@ -5,13 +5,26 @@ import math
 q_url = "./data/questions.csv"
 m_url = "./data/members.csv"
 
-with open(q_url) as f:
-    reader = csv.reader(f)
-    QUES = [row for row in reader]
+def file_change(url, q_or_m):
+    global QUES, MEMB
+    try:
+        with open(url, encoding="utf-8") as f:
+            reader = csv.reader(f)
+            if q_or_m == "q":
+                QUES = [row for row in reader] 
+            elif q_or_m == "m":
+                MEMB = {row[0]:row[1].replace('\\n', '\n') for row in reader}
+    except:
+        return
 
-with open(m_url) as f:
-    reader = csv.reader(f)
-    MEMB = {row[0]:row[1].replace('\\n', '\n') for row in reader}
+file_change(q_url, "q")
+file_change(m_url, "m")
+
+# 問題ファイルの変更
+def pick_files_result(e: ft.FilePickerResultEvent):
+    if e.files:
+        url = e.files[0].path
+        file_change(url, "q")
 
 
 def win(card: ft.Card):

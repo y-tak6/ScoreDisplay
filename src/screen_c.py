@@ -8,13 +8,15 @@ class screen_c:
 
 
     def __view(self):
-        QA = data.QUES[self.q_n]
+        try:
+            QA = data.QUES[self.q_n]
+        except:
+            QA = ["", "", ""]
         self.tb1.value = QA[1]
         self.tb2.value = QA[2]
         self.q_n += 1
         self.tb1.update()
         self.tb2.update()
-
 
     def __init__(self, inital) -> None:
         self.members = {}
